@@ -1,0 +1,18 @@
+{
+  "name": "NodejsWebApp",
+  "version": "0.1.0",
+  "description": "A message board based on sticky notes",
+  "main": "server.js",
+  "author": {
+    "name": "preet",
+    "email": "preet@dotnetprogrammer.org"
+  },
+  "dependencies": {
+    "ejs": "^1.0.0",
+    "ejs-locals": "^1.0.2",
+    "express": "^4.6.1",
+    "jade": "^1.4.2",
+    "underscore": "^1.6.0",
+    "vash": "^0.7.12-1"
+  }
+}

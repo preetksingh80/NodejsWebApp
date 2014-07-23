@@ -1,0 +1,11 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+<title>@model.title</title>
+</head>
+<body>
+@html.block("body")
+<footer>This is the footer</footer>
+</body>
+</html>
