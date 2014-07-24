@@ -11,9 +11,12 @@ var controllers = require("./controllers");
 //app.set("view engine", "jade");
 app.set("view engine", "vash"); 
 
+//set up the static public files
+app.use(express.static(__dirname + "/public"));
+
 // map the routes or controllers
 controllers.init(app);
 
 var server = http.createServer(app);
-
+ 
 server.listen(3000);

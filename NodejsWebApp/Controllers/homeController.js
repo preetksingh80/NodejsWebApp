@@ -3,9 +3,9 @@
     var data = require("../data");
     homeController.init = function (app) {
         
-        data.getData(function (people) {
+        data.getNoteCategories(function (errors, results) {
             app.get("/", function (request, response) {
-                response.send(people);
+                response.render("index", {title:"Notes", error: errors, categories: results });
             });
         });
        

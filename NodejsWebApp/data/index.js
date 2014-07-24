@@ -1,9 +1,9 @@
 ﻿(function(data) {
 
-    var dataService = require("./dataService");
+  var seedData = require("./seedData");
 
-    data.getData = function(callBackFunction) {
-        callBackFunction(dataService.people);
-    };
+  data.getNoteCategories = function (next) {
+    next(null, seedData.initialNotes);
+  };
 
 })(module.exports);
