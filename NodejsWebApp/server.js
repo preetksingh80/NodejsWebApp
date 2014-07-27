@@ -20,3 +20,4 @@ controllers.init(app);
 var server = http.createServer(app);
  
 server.listen(3000);
+console.log("Server Started and listening at port 3000")
