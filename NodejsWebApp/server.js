@@ -1,5 +1,6 @@
 ﻿var http = require("http");
 var express = require("express");
+var bodyParser = require('body-parser');
 var app = express();
 var controllers = require("./controllers");
 
@@ -10,6 +11,13 @@ var controllers = require("./controllers");
 //app.set("view engine", "ejs");
 //app.set("view engine", "jade");
 app.set("view engine", "vash"); 
+
+// require services
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// parse application/json
+app.use(bodyParser.json());
 
 //set up the static public files
 app.use(express.static(__dirname + "/public"));

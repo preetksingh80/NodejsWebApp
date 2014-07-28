@@ -8,16 +8,48 @@
             if (err) {
                 next(err, null);
             } else {
-                db.notes.find().toArray(function(errors, results) {
-                   if (errors) {
-                       next(errors, null);
-                   } else {
-                       next(null, results);
-                   }
+                db.notes.find().toArray(function (errors, results) {
+                    if (errors) {
+                        next(errors, null);
+                    } else {
+                        next(null, results);
+                    }
                 });
             }
         });
     };
+    
+    data.createNewCategory = function (categoryName, next) {
+        database.getDb(function (err, db) {
+            if (err) {
+                next(err, null);
+            } else {
+                db.notes.find({ name: categoryName }).count(function (error, count) {
+                    if (error) {
+                        next(error, null);
+                    } else {
+                        if (count !== 0) {
+                            next("Category already exists");
+                        } else {
+                            var category = {
+                                name: categoryName,
+                                notes: []
+                            };
+                            db.notes.insert(category, function (errors, results) {
+                                if (errors) {
+                                    next(errors, null);
+                                } else {
+                                    next(null, results);
+                                }
+                            });
+                        }
+                    }
+                });
+                
+            }
+        });
+    }
+    
     
     function seedDatabase() {
         database.getDb(function (err, db) {
@@ -38,7 +70,10 @@
                                     }
                                 });
                             });
+                        } else {
+                            console.log("Database is already seeded");
                         }
+                        
                     }
                 });
             }
